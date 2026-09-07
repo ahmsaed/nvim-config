@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -347,6 +346,17 @@ do
   vim.pack.add { gh 'NMAC427/guess-indent.nvim' }
   require('guess-indent').setup {}
 
+vim.pack.add { 'https://github.com/lewis6991/hover.nvim' }
+
+require('hover').setup {
+  init = function()
+    require('hover.providers.lsp')
+  end,
+}
+
+vim.keymap.set('n', 'H', require('hover').hover, { desc = 'Hover Documentation' })
+
+
   -- Here is a more advanced configuration example that passes options to `gitsigns.nvim`
   --
   -- See `:help gitsigns` to understand what each configuration key does.
@@ -361,8 +371,7 @@ do
       changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
     },
   }
-
-  -- Useful plugin to show you pending keybinds.
+ -- Useful plugin to show you pending keybinds.
   vim.pack.add { gh 'folke/which-key.nvim' }
   require('which-key').setup {
     -- Delay between pressing a key and opening which-key (milliseconds)
@@ -376,16 +385,14 @@ do
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
     },
   }
-
   -- [[ Colorscheme ]]
   -- You can easily change to a different colorscheme.
   -- Change the name of the colorscheme plugin below, and then
   -- change the command under that to load whatever the name of that colorscheme is.
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-
 vim.pack.add {
-  'https://github.com/projekt0n/github-nvim-theme',
+ 'https://github.com/projekt0n/github-nvim-theme',
 }
 
 require('github-theme').setup {
@@ -544,7 +551,7 @@ do
     group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
     callback = function(event)
       local buf = event.buf
-
+      
       -- Find references for the word under your cursor.
       vim.keymap.set('n', 'grr', builtin.lsp_references, { buffer = buf, desc = '[G]oto [R]eferences' })
 
@@ -841,9 +848,9 @@ do
   -- `friendly-snippets` contains a variety of premade snippets.
   --    See the README about individual language/framework/plugin snippets:
   --    https://github.com/rafamadriz/friendly-snippets
-  --
-  -- vim.pack.add { gh 'rafamadriz/friendly-snippets' }
-  -- require('luasnip.loaders.from_vscode').lazy_load()
+
+  vim.pack.add { gh 'rafamadriz/friendly-snippets' }
+ require('luasnip.loaders.from_vscode').lazy_load()
 
   -- [[ Autocomplete Engine ]]
   vim.pack.add { { src = gh 'saghen/blink.cmp', version = vim.version.range '1.*' } }
