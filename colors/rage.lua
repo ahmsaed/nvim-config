@@ -332,7 +332,7 @@ hl("IndentBlanklineContextChar", { fg = c.number })
 hl("MiniIndentscopeSymbol", { fg = c.number })
 
 hl("SnacksDashboardNormal", { fg = c.fg, bg = c.bg })
-hl("SnacksDashboardHeader", { fg = c.accent })
+hl("SnacksDashboardHeader", { fg = c.operator })
 hl("SnacksDashboardIcon", { fg = c.func })
 hl("SnacksDashboardDesc", { fg = c.fg })
 hl("SnacksDashboardKey", { fg = c.warning })
