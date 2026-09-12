@@ -5,3 +5,7 @@
 --
 --
 vim.opt.relativenumber = false
+
+vim.g.lazyvim_inlay_hints = {
+  enabled = false,
+}
